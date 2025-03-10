@@ -15,6 +15,9 @@ class FormContacts extends Component{
             'email'  => 'required|email|max:50',
             'phone'  => 'required|min:5|max:20',
         ]);
+
+        //clear form
+        $this->reset();
     }
 
     public function render()
