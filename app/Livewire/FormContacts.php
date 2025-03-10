@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Contact;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -18,6 +19,17 @@ class FormContacts extends Component{
     public function newContact(){
         //validation form
         $this->validate();
+
+        //store contact in database
+        Contact::firstOrCreate(
+            [
+                'name'  => $this->name,
+                'email' => $this->email,
+            ],
+            [
+                'phone' => $this->phone
+            ]
+        );
 
         //clear form
         $this->reset();
