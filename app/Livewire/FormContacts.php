@@ -2,19 +2,22 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class FormContacts extends Component{
 
-    public $name, $email, $phone;
+    #[Validate('required|min:3|max:50')]
+    public $name;
+    #[Validate('required|email|max:50')]
+    public $email;
+    #[Validate('required|min:5|max:20')]
+    public $phone;
+    
 
     public function newContact(){
         //validation form
-        $this->validate([
-            'name'   => 'required|min:3|max:50',
-            'email'  => 'required|email|max:50',
-            'phone'  => 'required|min:5|max:20',
-        ]);
+        $this->validate();
 
         //clear form
         $this->reset();
