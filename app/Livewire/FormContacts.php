@@ -15,13 +15,15 @@ class FormContacts extends Component{
     #[Validate('required|min:5|max:20')]
     public $phone;
     
+    public $error = "";
+    public $success = "";
 
     public function newContact(){
         //validation form
         $this->validate();
 
         //store contact in database
-        Contact::firstOrCreate(
+        $result = Contact::firstOrCreate(
             [
                 'name'  => $this->name,
                 'email' => $this->email,
@@ -31,8 +33,18 @@ class FormContacts extends Component{
             ]
         );
 
-        //clear form
-        $this->reset();
+        //check for success or error
+        if ($result->wasRecentlyCreated) {
+            //clear form
+            $this->reset();
+            
+            $this->success = "Contato criado com sucesso.";
+            
+        } else {
+            $this->error = "Erro ao criar Contato";
+        }
+        
+
     }
 
     public function render()
