@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Contact;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -48,6 +49,7 @@ class EditContacts extends Component{
         return redirect()->route('home');
     }
 
+    #[Title('Editar Contato')]
     public function render(){
         return view('livewire.edit-contacts');
     }

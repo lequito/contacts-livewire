@@ -1,6 +1,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-4">
+            <h3 class="text-center">EDITAR CONTATO</h3>
+            <hr>
             <div class="card p-5">
                 <form wire:submit="updateContact">
                     <div class="mb-3">

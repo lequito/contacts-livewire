@@ -1,4 +1,6 @@
 <div class="card p-5">
+    <h3 class="text-center">NOVO CONTATO</h3>
+    <hr>
     <form wire:submit="newContact">
         <div class="mb-3">
             <label for="name">Nome</label>

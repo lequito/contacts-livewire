@@ -1,5 +1,7 @@
 <div class="card p-5">
-    <p class="mb-3">Contatos</p>
+    <h3 class="text-center">CONTATOS</h3>
+
+    <hr>
     
     @if ($contacts->count() === 0)
         <div class="opacity-50">Não há Contatos</div>
