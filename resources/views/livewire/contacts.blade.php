@@ -1,8 +1,6 @@
 <div class="card p-5">
     <p class="mb-3">Contatos</p>
     
-    <hr class="m-0 p-0">
-
     @if ($contacts->count() === 0)
         <div class="opacity-50">Não há Contatos</div>
     @else
@@ -13,6 +11,9 @@
                     <div class="col">Nome: {{ $contact->name }}</div>
                     <div class="col">E-mail: {{ $contact->email }}</div>
                     <div class="col">Telefone: {{ $contact->phone }}</div>
+                    <div class="col">
+                        <a class="btn btn-sm btn-danger" href="{{ route('contacts.delete', ['id' => $contact->id]) }}">Deletar</a>
+                    </div>
                 </div>
             </div>
         @endforeach
