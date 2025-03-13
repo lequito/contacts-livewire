@@ -14,9 +14,6 @@ class FormContacts extends Component{
     public $email;
     #[Validate('required|min:5|max:20')]
     public $phone;
-    
-    public $error = "";
-    public $success = "";
 
     public function newContact(){
         //validation form
@@ -37,16 +34,26 @@ class FormContacts extends Component{
         if ($result->wasRecentlyCreated) {
             //clear form
             $this->reset();
-            
-            //success message
-            $this->success = "Contato criado com sucesso.";
 
             //create an event
             $this->dispatch('contactAdded');
-            
+
+            //success notification
+            $this->dispatch(
+                'notification',
+                type: 'success',
+                title: 'Contato criado com sucesso',
+                position: 'center'
+            );
         } else {
-            //error message
-            $this->error = "Erro ao criar Contato";
+
+            //error notification
+            $this->dispatch(
+                'notification',
+                type: 'error',
+                title: 'Contato já existe',
+                position: 'center'
+            );
         }
         
 
