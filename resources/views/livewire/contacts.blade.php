@@ -1,5 +1,16 @@
 <div class="card p-5">
-    <h3 class="text-center">CONTATOS</h3>
+
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <h3>CONTATOS</h3>
+        </div>
+
+        <div class="d-flex gap-2 align-items-center">
+            <input type="text" class="form-control" placeholder="Pesquisar" wire:model.live="search">
+        </div>
+
+    </div>
+
 
     <hr>
     
