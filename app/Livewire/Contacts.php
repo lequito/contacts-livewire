@@ -5,25 +5,16 @@ namespace App\Livewire;
 use App\Models\Contact;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Contacts extends Component{
 
-    public $contacts;
-
-    public function mount(){
-        $this->updateContact();
-    }
+    use WithPagination;
 
     #[On('contactAdded')]
-    public function updateContactList(){
-        $this->updateContact();
-    }
-
-    private function updateContact(){
-        $this->contacts = Contact::all();
-    }
+    public function updateContactList(){}
 
     public function render(){
-        return view('livewire.contacts');
+        return view('livewire.contacts')->with('contacts', Contact::paginate(5));
     }
 }
